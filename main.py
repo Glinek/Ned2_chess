@@ -7,7 +7,7 @@ from robot_move import RobotBoard
 
 robot_board = RobotBoard()
 board = chess.Board()
-engine = chess.engine.SimpleEngine.popen_uci(r"/usr/games/stockfish")
+engine = chess.engine.SimpleEngine.popen_uci(r"/home/glinek/Projects/Stockfish/stockfish-ubuntu-x86-64-avx2/stockfish/stockfish-ubuntu-x86-64-avx2")
 
 print("White or Black (w/b)? ")
 side = input()
