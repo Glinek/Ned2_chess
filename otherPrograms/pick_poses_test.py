@@ -1,6 +1,6 @@
 from pyniryo2 import *
 import chess.engine
-from count_board_picks import count_board_pick_coordinates
+from PlayingChess_1.count_board_picks import count_board_pick_coordinates
 
 ip = "192.168.1.10"
 home = PoseObject(0.140, 0.0, 0.203, 0.0, 0.760, 0.0)
