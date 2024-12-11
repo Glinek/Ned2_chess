@@ -2,10 +2,6 @@ import chess.engine
 from moveRobot import RobotBoard
 import logging
 
-
-print("White or Black (w/b)? ")
-side = input()
-
 class nedChess:
     def __init__(self, ipAddr, boardCorners, chessEnginePath):
         '''
@@ -26,6 +22,9 @@ class nedChess:
         Function that plays chess with the robot
         Args:
             - move: Move of the player
+        Returns:
+            - 1 if the game is not over
+            - 0 if the game is over
         '''
         #---- Check if the game is over ----
         if not self.board.is_game_over():
@@ -58,14 +57,19 @@ class nedChess:
                 #
                 #---- Move pices ----
                 self.robot_board.do_move(self.result_move.move, self.capture, self.piece_to_move, self.piece_to_capture)
+            return 1
         else:
             logging.info(f"Game over. {self.board.outcome()}")
             self.engine.quit()
             self.robot_board.end()
+            return 0
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.ERROR, format="%(asctime)s %(levelname)s %(message)s", datefmt="%y-%m-%d %H:%M") #logging setup
-    nedChessRobot = nedChess("192.168.0.55", "board_poses4.txt", r"/home/glinek/Projects/Stockfish/stockfish-ubuntu-x86-64-avx2/stockfish/stockfish-ubuntu-x86-64-avx2")
-    nedChessRobot.playChessWhite()
-    
+    nedChessRobot = nedChess("10.10.10.10", "board_poses4.txt", r"/home/glinek/Projects/Stockfish/stockfish-ubuntu-x86-64-avx2/stockfish/stockfish-ubuntu-x86-64-avx2")
+    outcome = 1
+
+    while outcome == 1:
+        move = input("Players move: ")
+        outcome = nedChessRobot.playChessWhite(move)
