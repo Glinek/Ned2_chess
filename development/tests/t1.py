@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 
 # Load the image
-image = cv2.imread(r'F:\PjSB1 - Current, Hibernating projects\Current Projects\Niryo chess\tests\edgeDetectedImages\canny_edges2.jpg')
+#image = cv2.imread(r'F:\PjSB1 - Current, Hibernating projects\Current Projects\Niryo chess\tests\edgeDetectedImages\canny_edges2.jpg')
+image = cv2.imread(r'/home/glinek/Programming/ChessRobot/Ned2_chess/development/boardPhotos-mk3/fixedBoardGreen2.png')
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # Use Canny edge detection

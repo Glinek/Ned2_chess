@@ -32,13 +32,13 @@ class EdgeDetection:
 
 # Example usage:
 if __name__ == "__main__":
-    edge_detector = EdgeDetection(r'F:\PjSB1 - Current, Hibernating projects\Current Projects\Niryo chess\boards\board31.jpg')
+    edge_detector = EdgeDetection(r'/home/glinek/Programming/ChessRobot/Ned2_chess/development/boardPhotos-mk3/fixedBoardGreen2.png')
     
     canny_edges = edge_detector.apply_canny(100, 200)
     edge_detector.save_image(canny_edges)
     
     sobel_edges = edge_detector.apply_sobel()
-    edge_detector.save_image(sobel_edges)
+    #edge_detector.save_image(sobel_edges)
     
     laplacian_edges = edge_detector.apply_laplacian()
-    edge_detector.save_image(laplacian_edges)
+    #edge_detector.save_image(laplacian_edges)
