@@ -1,6 +1,7 @@
 from pyniryo2 import *
 import chess.engine
 from countBoardPicks import count_board_pick_coordinates
+import logging
 
 class RobotBoard:
     def __init__(self, ip, boardCorners):
@@ -81,15 +82,6 @@ class RobotBoard:
                 # self.tool_id == ToolID.GRIPPER_2:
                 self.dz = 0.03
 
-        print(f"MOVE: {str(move)}") #DEBUG!!!!
-        print(f"Piece: {piece_to_move}") #DEBUG!!!!
-        # king and rook castling (roszada!!!)
-        #if piece_to_move == 6 and (str(move) == "e8g8" or str(move) == "e8c8" or str(move) == "e1g1" or str(move) == "e1c1"):
-        if piece_to_move == "k" and str(move) == "e8g8":
-            self.do_move("h8f8", False, chess.ROOK, 0)
-            print("WORKS! i guess...")
-        
-
         self.robot.arm.move_pose(PoseObject(self.pick_poses[x1][y1][0],
                                             self.pick_poses[x1][y1][1],
                                             self.pick_poses[x1][y1][2] + self.dz + 0.1,
@@ -129,7 +121,13 @@ class RobotBoard:
                                             self.pick_poses[x2][y2][3],
                                             self.pick_poses[x2][y2][4],
                                             self.pick_poses[x2][y2][5]))
-        self.robot.arm.move_pose(self.home)
+        if piece_to_move == "k" and str(move) == "e8g8":
+            self.do_move("h8f8", False, "r", 0)
+        elif piece_to_move == "k" and str(move) == "e8c8":
+            self.do_move("a8d8", False, "r", 0)
+        else:
+            self.robot.arm.move_pose(self.home)
+
 
     def end(self):
         self.robot.arm.move_pose(self.home)
