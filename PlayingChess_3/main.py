@@ -43,7 +43,7 @@ class nedChess:
                 logging.info(f"Board after PLAYER moves\n----------------\nblack\n{self.board}\nwhite\n----------------")
                 #
                 #---- Calculate robot's move ----
-                self.result_move = self.engine.play(self.board, chess.engine.Limit(time = 0.0001))
+                self.result_move = self.engine.play(self.board, chess.engine.Limit(time = 1))
                 logging.info(f"Robot's move: {self.result_move}")
                 #
                 #---- Check if move is a capture ----
@@ -60,6 +60,7 @@ class nedChess:
                 logging.info(f"Board after ROBOT moves\n----------------\nblack\n{self.board}\nwhite\n----------------")
                 #
                 #---- Move pices ----
+                print(f"__move:{self.result_move.move},capture:{self.capture},pieceMove:{self.piece_to_move},pieceCaptured:{self.piece_to_capture}")
                 self.robot_board.do_move(self.result_move.move, self.capture, self.piece_to_move, self.piece_to_capture)
                 if self.board.is_game_over() == True:
                     logging.info(f"Game over. {self.board.outcome()}")
@@ -76,9 +77,10 @@ class nedChess:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%y-%m-%d %H:%M") #logging setup
-    nedChessRobot = nedChess("192.168.0.55", "board_poses4.txt", r"C:/Users/szymo/Desktop/RoboChess/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2")
+    #IP: 192.168.0.55 (wired) or 10.10.10.10 (hotspot)
+    nedChessRobot = nedChess("10.10.10.10", "board_poses4.txt", r"C:/Users/szymo/Desktop/RoboChess/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2")
     outcome = 1
 
     while outcome == 1:
-        move = input("Players move: ")
+        move = input("Players move (press Q to EXIT): ")
         outcome = nedChessRobot.playChessWhite(move)
