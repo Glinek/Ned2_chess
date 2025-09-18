@@ -60,7 +60,6 @@ class nedChess:
                 logging.info(f"Board after ROBOT moves\n----------------\nblack\n{self.board}\nwhite\n----------------")
                 #
                 #---- Move pices ----
-                print(f"__move:{self.result_move.move},capture:{self.capture},pieceMove:{self.piece_to_move},pieceCaptured:{self.piece_to_capture}")
                 self.robot_board.do_move(self.result_move.move, self.capture, self.piece_to_move, self.piece_to_capture)
                 if self.board.is_game_over() == True:
                     logging.info(f"Game over. {self.board.outcome()}")
@@ -80,7 +79,11 @@ if __name__ == "__main__":
     #IP: 192.168.0.55 (wired) or 10.10.10.10 (hotspot)
     nedChessRobot = nedChess("10.10.10.10", "board_poses4.txt", r"C:/Users/szymo/Desktop/RoboChess/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2")
     outcome = 1
+    moves = 0
 
     while outcome == 1:
         move = input("Players move (press Q to EXIT): ")
         outcome = nedChessRobot.playChessWhite(move)
+        moves += 1
+
+    logging.info(f"Player's moves total: {moves}")
