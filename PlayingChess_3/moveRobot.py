@@ -121,9 +121,9 @@ class RobotBoard:
                                             self.pick_poses[x2][y2][3],
                                             self.pick_poses[x2][y2][4],
                                             self.pick_poses[x2][y2][5]))
-        if piece_to_move == "k" and str(move) == "e8g8":
+        if str(piece_to_move) == "k" and str(move) == "e8g8":
             self.do_move("h8f8", False, "r", 0)
-        elif piece_to_move == "k" and str(move) == "e8c8":
+        elif str(piece_to_move) == "k" and str(move) == "e8c8":
             self.do_move("a8d8", False, "r", 0)
         else:
             self.robot.arm.move_pose(self.home)
