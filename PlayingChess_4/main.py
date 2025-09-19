@@ -60,7 +60,6 @@ class nedChess:
                 logging.info(f"Board after ROBOT moves\n----------------\nblack\n{self.board}\nwhite\n----------------")
                 #
                 #---- Move pices ----
-                print(f"rmove{type(self.result_move.move)} capture{type(self.capture)} pieceMove{type(self.piece_to_move)} pieceCapture{type(self.piece_to_capture)}")
                 self.robot_board.do_move(self.result_move.move, self.capture, self.piece_to_move, self.piece_to_capture)
                 if self.board.is_game_over() == True:
                     logging.info(f"Game over. {self.board.outcome()}")
