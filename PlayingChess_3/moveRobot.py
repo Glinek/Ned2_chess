@@ -19,7 +19,7 @@ class RobotBoard:
         self.robot.arm.calibrate_auto()
         self.robot.tool.update_tool()
         self.tool_id = self.robot.tool.get_current_tool_id()
-        print(self.tool_id)
+        logging.info(f"Tool ID: {self.tool_id}")
 
 
     def do_move(self, move, capture, piece_to_move, piece_to_capture):
@@ -29,7 +29,7 @@ class RobotBoard:
         x1 = int(str(move)[1]) - 1
         y2 = self.dimensions[str(move)[2]]
         x2 = int(str(move)[3]) - 1
-        print(x1, y1, x2, y2)
+        #print(x1, y1, x2, y2)
 
         if capture:
             if piece_to_capture == chess.PAWN:
