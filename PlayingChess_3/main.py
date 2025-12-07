@@ -78,7 +78,7 @@ class nedChess:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s", datefmt="%y-%m-%d %H:%M") #logging setup
     #IP: 192.168.0.55 (wired) or 10.10.10.10 (hotspot)
-    nedChessRobot = nedChess("192.168.0.55", "board_poses4.txt", r"C:/Users/szymo/Desktop/RoboChess/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2")
+    nedChessRobot = nedChess("192.168.0.55", "board_poses4.txt", r"C:/Users/szymo/Desktop/School/Zawodowe/RoboChess/stockfish-windows-x86-64-avx2/stockfish/stockfish-windows-x86-64-avx2")
     outcome = 1
     moves = 0
 
